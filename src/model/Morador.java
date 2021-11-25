@@ -30,7 +30,6 @@ public class Morador {
 	 * @param email
 	 */
 	public Morador(int idMorador, String nome, String email, String cpf, String telefone) {
-		super();
 		this.idMorador = idMorador;
 		this.nome = nome;
 		this.email = email;
