@@ -8,7 +8,7 @@ package model;
 public class Morador {
 
 	private int idMorador;
-	private String nome, email, cpf, telefone;
+	private String nome, cpf, telefone, email;
 	
 	
 	public String toString(){
@@ -29,12 +29,11 @@ public class Morador {
 	 * @param nome
 	 * @param email
 	 */
-	public Morador(int idMorador, String nome, String email, String cpf, String telefone) {
-		this.idMorador = idMorador;
+	public Morador(String nome, String email, String cpf, String telefone) {
 		this.nome = nome;
-		this.email = email;
 		this.cpf = cpf;
 		this.telefone = telefone;
+		this.email = email;		
 	}
 
 	public int getIdMorador() {
