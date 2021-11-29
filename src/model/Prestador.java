@@ -7,36 +7,44 @@ package model;
  */
 public class Prestador {
 
-	private int idPrestador, cnpj, cpf, rg, cep, telefone;
-	private String nome, endereco;
-	
+	private int idPrestador;
+	private String nome, cnpj, cpf,rg, cep, endereco, telefone, nome_resp;
+
 	/**
 	 * Método contrutor default
 	 */
 	public Prestador() {
-		
+
 	}
 
 	/**
 	 * Método construtor da classe Prestadores, usado para criar um objeto já passando seus valores.
-	 * @param idPrestador
+	 * @param nome
 	 * @param cnpj
 	 * @param cpf
 	 * @param rg
 	 * @param cep
-	 * @param telefone
-	 * @param nome
 	 * @param endereco
+	 * @param telefone
+	 * @param nome_resp - Para quem o prestador irá prestar o serviço.
 	 */
-	public Prestador(int idPrestador, int cnpj, int cpf, int rg, int cep, int telefone, String nome, String endereco) {
-		this.idPrestador = idPrestador;
+	public Prestador(String nome, String cnpj, String cpf, String rg, String cep, String endereco,
+			String telefone, String nome_resp) {
+		this.nome = nome;
 		this.cnpj = cnpj;
 		this.cpf = cpf;
 		this.rg = rg;
 		this.cep = cep;
-		this.telefone = telefone;
-		this.nome = nome;
 		this.endereco = endereco;
+		this.telefone = telefone;
+		this.nome_resp = nome_resp;
+	}
+		
+	@Override
+	public String toString() {
+		return "[idPrestador=" + idPrestador + ", nome=" + nome + ", cnpj=" + cnpj + ", cpf=" + cpf + ", rg="
+				+ rg + ", cep=" + cep + ", endereco=" + endereco + ", telefone=" + telefone + ", nome_resp=" + nome_resp
+				+ "]";
 	}
 
 	public int getIdPrestador() {
@@ -47,52 +55,44 @@ public class Prestador {
 		this.idPrestador = idPrestador;
 	}
 
-	public int getCnpj() {
-		return cnpj;
-	}
-
-	public void setCnpj(int cnpj) {
-		this.cnpj = cnpj;
-	}
-
-	public int getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(int cpf) {
-		this.cpf = cpf;
-	}
-
-	public int getRg() {
-		return rg;
-	}
-
-	public void setRg(int rg) {
-		this.rg = rg;
-	}
-
-	public int getCep() {
-		return cep;
-	}
-
-	public void setCep(int cep) {
-		this.cep = cep;
-	}
-
-	public int getTelefone() {
-		return telefone;
-	}
-
-	public void setTelefone(int telefone) {
-		this.telefone = telefone;
-	}
-
 	public String getNome() {
 		return nome;
 	}
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public String getCnpj() {
+		return cnpj;
+	}
+
+	public void setCnpj(String cnpj) {
+		this.cnpj = cnpj;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public String getRg() {
+		return rg;
+	}
+
+	public void setRg(String rg) {
+		this.rg = rg;
+	}
+
+	public String getCep() {
+		return cep;
+	}
+
+	public void setCep(String cep) {
+		this.cep = cep;
 	}
 
 	public String getEndereco() {
@@ -102,5 +102,22 @@ public class Prestador {
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
-	
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	public String getNome_resp() {
+		return nome_resp;
+	}
+
+	public void setNome_resp(String nome_resp) {
+		this.nome_resp = nome_resp;
+	}
+
+
 }

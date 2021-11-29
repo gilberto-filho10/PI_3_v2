@@ -31,14 +31,13 @@ public class MoradorDAO {
 			men = "Morador "+m.getNome() + " inserido com sucesso!";  
 		}
 		catch(SQLException erro) {
-			sql = "update MORADOR set Nome=?,Cpf=?,Telefone=?,Email=? where codigo=?";
+			sql = "update MORADOR set Nome=?,Telefone=?,Email=? where CPF_MORADOR=?";
 			try {
 				bd.st = bd.con.prepareStatement(sql);
-				bd.st.setInt(5, m.getIdMorador());
 				bd.st.setString(1, m.getNome());
-				bd.st.setString(2, m.getCpf());
-				bd.st.setString(3, m.getTelefone());
-				bd.st.setString(4, m.getEmail());
+				bd.st.setString(4, m.getCpf());
+				bd.st.setString(2, m.getTelefone());
+				bd.st.setString(3, m.getEmail());
 				bd.st.executeUpdate();
 				men = "Morador "+m.getNome() + " alterado com sucesso"; 
 			}
@@ -58,15 +57,16 @@ public class MoradorDAO {
 	 * @return mensagem informando o ocorrido
 	 */
 	public String excluir(int IdMorador) {
-		sql = "delete from MORADOR where codigo=?";
+		sql = "delete from MORADOR where ID_MORADOR=?";
 		try {
 			bd.getConnection();
+			bd.st = bd.con.prepareStatement(sql);
 			bd.st.setInt(1,IdMorador);
 			if(bd.st.executeUpdate()==1){
-				men = "Produto excluido com sucesso!";
+				men = "Morador excluido com sucesso!";
 			}
 			else {
-				men = "Produto não encontrado...";
+				men = "Morador não encontrado...";
 			}
 		}
 		catch(SQLException erro) {
@@ -85,7 +85,7 @@ public class MoradorDAO {
 	 */
 	public Morador localizar (int IdMorador) {
 		Morador m = new Morador(); 
-		sql = "select * from MORADOR where codigo=?";
+		sql = "select * from MORADOR where ID_MORADOR=?";
 		try {
 			bd.getConnection();
 			bd.st = bd.con.prepareStatement(sql);

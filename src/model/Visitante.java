@@ -7,8 +7,8 @@ package model;
  */
 public class Visitante {
 
-	private int idVisitantes, cpf, telefone;
-	private String nome, email;
+	private int idVisitante;
+	private String nome, cpf, telefone, email, nome_resp;
 	
 	/**
 	 * Método contrutor default
@@ -16,45 +16,35 @@ public class Visitante {
 	public Visitante() {
 		
 	}
+	
+	@Override
+	public String toString() {
+		return "Visitante [idVisitante=" + idVisitante + ", nome=" + nome + ", cpf=" + cpf + ", telefone=" + telefone
+				+ ", email=" + email + ", nome_resp=" + nome_resp + "]";
+	}
 
 	/**
 	 * Método construtor da classe Visitantes, usado para criar um objeto já passando seus valores.
-	 * @param idVisitantes
+	 * @param nome
 	 * @param cpf
 	 * @param telefone
-	 * @param nome
 	 * @param email
+	 * @param nome_resp - Para quem o prestador irá prestar o serviço.
 	 */
-	public Visitante(int idVisitantes, int cpf, int telefone, String nome, String email) {
-		this.idVisitantes = idVisitantes;
-		this.cpf = cpf;
-		this.telefone = telefone;
+	public Visitante(String nome, String cpf, String telefone, String email, String nome_resp) {
 		this.nome = nome;
-		this.email = email;
-	}
-
-	public int getIdVisitantes() {
-		return idVisitantes;
-	}
-
-	public void setIdVisitantes(int idVisitantes) {
-		this.idVisitantes = idVisitantes;
-	}
-
-	public int getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(int cpf) {
 		this.cpf = cpf;
-	}
-
-	public int getTelefone() {
-		return telefone;
-	}
-
-	public void setTelefone(int telefone) {
 		this.telefone = telefone;
+		this.email = email;
+		this.nome_resp = nome_resp;
+	}
+
+	public int getIdVisitante() {
+		return idVisitante;
+	}
+
+	public void setIdVisitante(int idVisitante) {
+		this.idVisitante = idVisitante;
 	}
 
 	public String getNome() {
@@ -65,6 +55,22 @@ public class Visitante {
 		this.nome = nome;
 	}
 
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -72,6 +78,14 @@ public class Visitante {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
+	public String getNome_resp() {
+		return nome_resp;
+	}
+
+	public void setNome_resp(String nome_resp) {
+		this.nome_resp = nome_resp;
+	}
+		
 	
 }

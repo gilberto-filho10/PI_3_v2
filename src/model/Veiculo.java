@@ -7,8 +7,8 @@ package model;
  */
 public class Veiculo {
 
-	private int idVeiculo, placa, ano;
-	private String modelo, cor;
+	private int idVeiculo;
+	private String modelo, placa, ano, cor;
 	
 	/**
 	 * Método contrutor default
@@ -24,10 +24,11 @@ public class Veiculo {
 	 * @param modelo
 	 * @param cor
 	 */
-	public Veiculo(int placa, int ano, String modelo, String cor) {
+	public Veiculo(int idVeiculo, String modelo, String placa, String ano, String cor) {
+		this.idVeiculo = idVeiculo;
+		this.modelo = modelo;
 		this.placa = placa;
 		this.ano = ano;
-		this.modelo = modelo;
 		this.cor = cor;
 	}
 
@@ -39,22 +40,6 @@ public class Veiculo {
 		this.idVeiculo = idVeiculo;
 	}
 
-	public int getPlaca() {
-		return placa;
-	}
-
-	public void setPlaca(int placa) {
-		this.placa = placa;
-	}
-
-	public int getAno() {
-		return ano;
-	}
-
-	public void setAno(int ano) {
-		this.ano = ano;
-	}
-
 	public String getModelo() {
 		return modelo;
 	}
@@ -63,12 +48,38 @@ public class Veiculo {
 		this.modelo = modelo;
 	}
 
+	public String getPlaca() {
+		return placa;
+	}
+
+	public void setPlaca(String placa) {
+		this.placa = placa;
+	}
+
+	public String getAno() {
+		return ano;
+	}
+
+	public void setAno(String ano) {
+		this.ano = ano;
+	}
+
 	public String getCor() {
 		return cor;
 	}
 
 	public void setCor(String cor) {
 		this.cor = cor;
-	}	
+	}
+
+	@Override
+	public String toString() {
+		return "["+ idVeiculo +", modelo=" + modelo + ", placa=" + placa + ", ano=" + ano + ", cor="
+				+ cor + "]";
+	}
+
+	
+	
+	
 
 }
