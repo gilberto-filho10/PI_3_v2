@@ -1,4 +1,4 @@
-package viewer;
+package testesViewer;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class GUIMorador extends JFrame {
+public class GUIMenuPrincial extends JFrame {
 
 	private JPanel contentPane;
 
@@ -18,7 +18,7 @@ public class GUIMorador extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GUIMorador frame = new GUIMorador();
+					GUIMenuPrincial frame = new GUIMenuPrincial();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -30,7 +30,7 @@ public class GUIMorador extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public GUIMorador() {
+	public GUIMenuPrincial() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();

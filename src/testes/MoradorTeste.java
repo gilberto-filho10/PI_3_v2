@@ -2,8 +2,6 @@ package testes;
 
 import model.Morador;
 import model.MoradorDAO;
-import model.Veiculo;
-import model.VeiculoDAO;
 
 public class MoradorTeste {
 
