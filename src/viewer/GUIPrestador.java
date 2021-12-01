@@ -7,11 +7,15 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.JFormattedTextField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class GUIPrestador extends JFrame {
 
@@ -61,7 +65,7 @@ public class GUIPrestador extends JFrame {
 		contentPane.add(lbIdPrestadores);
 		
 		JLabel lbNome = new JLabel("Nome");
-		lbNome.setBounds(260, 74, 46, 14);
+		lbNome.setBounds(293, 74, 46, 14);
 		contentPane.add(lbNome);
 		
 		JLabel lbCnpj = new JLabel("CNPJ");
@@ -69,7 +73,7 @@ public class GUIPrestador extends JFrame {
 		contentPane.add(lbCnpj);
 		
 		JLabel lbCpf = new JLabel("CPF");
-		lbCpf.setBounds(260, 112, 46, 14);
+		lbCpf.setBounds(293, 112, 46, 14);
 		contentPane.add(lbCpf);
 		
 		JLabel lbRg = new JLabel("RG");
@@ -77,60 +81,60 @@ public class GUIPrestador extends JFrame {
 		contentPane.add(lbRg);
 		
 		JLabel lbCep = new JLabel("CEP");
-		lbCep.setBounds(260, 143, 46, 14);
+		lbCep.setBounds(293, 143, 46, 14);
 		contentPane.add(lbCep);
 		
 		JLabel lbEndereco = new JLabel("Endere\u00E7o");
-		lbEndereco.setBounds(28, 154, 46, 14);
+		lbEndereco.setBounds(28, 154, 68, 14);
 		contentPane.add(lbEndereco);
 		
 		JLabel lbResponsavel = new JLabel("Morador Solicitante ");
-		lbResponsavel.setBounds(28, 182, 100, 14);
+		lbResponsavel.setBounds(28, 182, 131, 14);
 		contentPane.add(lbResponsavel);
 		
 		JLabel lbTelefone = new JLabel("Telefone");
-		lbTelefone.setBounds(270, 179, 46, 14);
+		lbTelefone.setBounds(293, 171, 68, 14);
 		contentPane.add(lbTelefone);
 		
 		textField = new JTextField();
 		textField.setEditable(false);
-		textField.setBounds(70, 59, 56, 20);
+		textField.setBounds(103, 56, 56, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 		tfNome = new JTextField();
-		tfNome.setBounds(298, 71, 184, 20);
+		tfNome.setBounds(331, 71, 184, 20);
 		contentPane.add(tfNome);
 		tfNome.setColumns(10);
 		
 		JFormattedTextField txCnpj = new JFormattedTextField();
-		txCnpj.setBounds(70, 93, 100, 20);
+		txCnpj.setBounds(103, 90, 100, 20);
 		contentPane.add(txCnpj);
 		
 		JFormattedTextField txCpf = new JFormattedTextField();
-		txCpf.setBounds(298, 106, 184, 20);
+		txCpf.setBounds(331, 106, 184, 20);
 		contentPane.add(txCpf);
 		
 		JFormattedTextField txCep = new JFormattedTextField();
-		txCep.setBounds(298, 137, 118, 20);
+		txCep.setBounds(331, 137, 148, 20);
 		contentPane.add(txCep);
 		
 		JFormattedTextField txTelefone = new JFormattedTextField();
-		txTelefone.setBounds(323, 176, 103, 20);
+		txTelefone.setBounds(356, 168, 122, 20);
 		contentPane.add(txTelefone);
 		
 		tfEndereco = new JTextField();
-		tfEndereco.setBounds(84, 151, 142, 20);
+		tfEndereco.setBounds(117, 148, 142, 20);
 		contentPane.add(tfEndereco);
 		tfEndereco.setColumns(10);
 		
 		txSolicitante = new JTextField();
-		txSolicitante.setBounds(128, 179, 108, 20);
+		txSolicitante.setBounds(161, 176, 108, 20);
 		contentPane.add(txSolicitante);
 		txSolicitante.setColumns(10);
 		
 		tfRg = new JTextField();
-		tfRg.setBounds(70, 124, 100, 20);
+		tfRg.setBounds(103, 121, 100, 20);
 		contentPane.add(tfRg);
 		tfRg.setColumns(10);
 		
@@ -149,8 +153,29 @@ public class GUIPrestador extends JFrame {
 		contentPane.add(btLocalizarP);
 		
 		JButton tbSalvarP = new JButton("Salvar");
+		tbSalvarP.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(tfNome.getText() != null && txCpf.getText()!=null) {
+					JOptionPane.showMessageDialog(null,"Cadastro realizado com sucesso");
+				}
+				else {
+					JOptionPane.showMessageDialog(null,"Verifique o preenchimento dos dados");
+					}
+			}
+		});
 		tbSalvarP.setBounds(221, 210, 87, 23);
 		contentPane.add(tbSalvarP);
+		
+		JButton btVoltar = new JButton("Voltar");
+		btVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				GUIMenu frame = new GUIMenu();
+				frame.setVisible(true);
+				dispose();
+			}
+		});
+		btVoltar.setBounds(10, 9, 74, 23);
+		contentPane.add(btVoltar);
 	}
 
 }

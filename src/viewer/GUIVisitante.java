@@ -8,10 +8,14 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JFormattedTextField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class GUIVisitante extends JFrame {
 
@@ -20,7 +24,7 @@ public class GUIVisitante extends JFrame {
 	private JTextField txIdVisitante;
 	private JTextField textField_1;
 	private JTextField textField_2;
-	private JTextField textField_3;
+	private JTextField tfMorResp;
 
 	/**
 	 * Launch the application.
@@ -43,7 +47,7 @@ public class GUIVisitante extends JFrame {
 	 */
 	public GUIVisitante() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 322);
+		setBounds(100, 100, 472, 330);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.ORANGE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -56,6 +60,16 @@ public class GUIVisitante extends JFrame {
 		contentPane.add(lbTituloVi);
 		
 		JButton tbSalvarVi = new JButton("Salvar");
+		tbSalvarVi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//if(tfMorResp.getText() == null) {
+					JOptionPane.showMessageDialog(null,"Verifique o preenchimento dos dados");
+				//}
+				//else {
+					//JOptionPane.showMessageDialog(null,"Cadastro realizado com sucesso");
+					//}
+			}
+		});
 		tbSalvarVi.setBounds(183, 193, 87, 23);
 		contentPane.add(tbSalvarVi);
 		
@@ -85,7 +99,7 @@ public class GUIVisitante extends JFrame {
 		
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
-		textField_1.setBounds(194, 44, 192, 20);
+		textField_1.setBounds(207, 44, 191, 20);
 		contentPane.add(textField_1);
 		
 		JLabel lbNome = new JLabel("Nome");
@@ -97,15 +111,15 @@ public class GUIVisitante extends JFrame {
 		contentPane.add(lbCpf);
 		
 		JFormattedTextField txCpf = new JFormattedTextField();
-		txCpf.setBounds(79, 75, 108, 20);
+		txCpf.setBounds(101, 72, 108, 20);
 		contentPane.add(txCpf);
 		
 		JFormattedTextField txTelefone = new JFormattedTextField();
-		txTelefone.setBounds(79, 103, 108, 20);
+		txTelefone.setBounds(101, 100, 108, 20);
 		contentPane.add(txTelefone);
 		
 		JLabel lbTelefone = new JLabel("Telefone");
-		lbTelefone.setBounds(23, 106, 46, 14);
+		lbTelefone.setBounds(23, 106, 61, 14);
 		contentPane.add(lbTelefone);
 		
 		JLabel lbEmail = new JLabel("E-mal");
@@ -118,13 +132,24 @@ public class GUIVisitante extends JFrame {
 		contentPane.add(textField_2);
 		
 		JLabel lblMoradorResponsavel = new JLabel("Morador Respons\u00E1vel");
-		lblMoradorResponsavel.setBounds(23, 165, 100, 14);
+		lblMoradorResponsavel.setBounds(23, 165, 126, 14);
 		contentPane.add(lblMoradorResponsavel);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(123, 162, 161, 20);
-		contentPane.add(textField_3);
+		tfMorResp = new JTextField();
+		tfMorResp.setColumns(10);
+		tfMorResp.setBounds(159, 162, 239, 20);
+		contentPane.add(tfMorResp);
+		
+		JButton btVoltar = new JButton("Voltar");
+		btVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				GUIMenu frame = new GUIMenu();
+				frame.setVisible(true);
+				dispose();
+			}
+		});
+		btVoltar.setBounds(10, 9, 74, 23);
+		contentPane.add(btVoltar);
 	}
 
 }

@@ -8,10 +8,14 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JFormattedTextField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class GUIVeiculo extends JFrame {
 
@@ -99,6 +103,11 @@ public class GUIVeiculo extends JFrame {
 		tfIdVeiculo.setColumns(10);
 		
 		JButton tbSalvarVe = new JButton("Salvar");
+		tbSalvarVe.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null,"Cadastro realizado com sucesso");
+			}
+		});
 		tbSalvarVe.setBounds(170, 181, 87, 23);
 		contentPane.add(tbSalvarVe);
 		
@@ -113,8 +122,26 @@ public class GUIVeiculo extends JFrame {
 		contentPane.add(tfLocalizarVe);
 		
 		JButton btLocalizarVe = new JButton("Pesquisar");
+		btLocalizarVe.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				GUIConsulta frame = new GUIConsulta();
+				frame.setVisible(true);
+				dispose();
+			}
+		});
 		btLocalizarVe.setBounds(309, 228, 89, 23);
 		contentPane.add(btLocalizarVe);
+		
+		JButton btVoltar = new JButton("Voltar");
+		btVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				GUIMenu frame = new GUIMenu();
+				frame.setVisible(true);
+				dispose();
+			}
+		});
+		btVoltar.setBounds(10, 9, 74, 23);
+		contentPane.add(btVoltar);
 	}
 
 }

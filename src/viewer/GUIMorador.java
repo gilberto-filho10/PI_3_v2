@@ -1,17 +1,23 @@
 package viewer;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.Color;
-import javax.swing.JLabel;
+import java.awt.EventQueue;
 import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.JFormattedTextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+
+import model.Morador;
+import model.MoradorDAO;
+import services.BD;
 
 public class GUIMorador extends JFrame {
 
@@ -20,6 +26,9 @@ public class GUIMorador extends JFrame {
 	private JTextField tfNome;
 	private JTextField tfEmail;
 	private JTextField tfLocalizarM;
+	private MoradorDAO dao;
+	private Morador m;
+	private BD bd;
 
 	/**
 	 * Launch the application.
@@ -41,6 +50,11 @@ public class GUIMorador extends JFrame {
 	 * Create the frame.
 	 */
 	public GUIMorador() {
+		dao = new MoradorDAO();
+		m = new Morador();
+		bd = new BD();
+		bd.getConnection();
+		
 		setBackground(Color.WHITE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -114,7 +128,28 @@ public class GUIMorador extends JFrame {
 		contentPane.add(btLocalizarM);
 		
 		JButton tbSalvarM = new JButton("Salvar");
+		tbSalvarM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(tfNome.getText() != null && txCpf.getText()!=null) {
+					JOptionPane.showMessageDialog(null,"Cadastro realizado com sucesso");
+				}
+				else {
+					JOptionPane.showMessageDialog(null,"Verifique o preenchimento dos dados");
+					}
+			}
+		});
 		tbSalvarM.setBounds(181, 185, 87, 23);
 		contentPane.add(tbSalvarM);
+		
+		JButton btVoltar = new JButton("Voltar");
+		btVoltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				GUIMenu frame = new GUIMenu();
+				frame.setVisible(true);
+				dispose();
+			}
+		});
+		btVoltar.setBounds(10, 11, 74, 23);
+		contentPane.add(btVoltar);
 	}
 }

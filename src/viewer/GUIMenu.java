@@ -1,18 +1,17 @@
 package viewer;
 
-import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import java.awt.Color;
-import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.SwingConstants;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class GUIMenu extends JFrame {
 
@@ -52,30 +51,64 @@ public class GUIMenu extends JFrame {
 		contentPane.add(lbtitulo);
 		
 		JButton btMorador = new JButton("Moradores");
+		btMorador.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				GUIMorador frame = new GUIMorador();
+				frame.setVisible(true);
+				dispose();
+			}
+		});
 		btMorador.setBounds(78, 98, 118, 23);
 		contentPane.add(btMorador);
 		
 		JButton btVisitantes = new JButton("Visitantes");
 		btVisitantes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				GUIVisitante frame = new GUIVisitante();
+				frame.setVisible(true);
+				dispose();
 			}
 		});
 		btVisitantes.setBounds(78, 132, 118, 23);
 		contentPane.add(btVisitantes);
 		
 		JButton btPrestadores = new JButton("Prestadores");
+		btPrestadores.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				GUIPrestador frame = new GUIPrestador();
+				frame.setVisible(true);
+				dispose();
+			}
+		});
 		btPrestadores.setBounds(78, 166, 118, 23);
 		contentPane.add(btPrestadores);
 		
 		JButton btVeiculo = new JButton("Ve\u00EDculos");
+		btVeiculo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				GUIVeiculo frame = new GUIVeiculo();
+				frame.setVisible(true);
+				dispose();
+			}
+		});
 		btVeiculo.setBounds(240, 98, 111, 23);
 		contentPane.add(btVeiculo);
 		
 		JButton btChamado = new JButton("Chamados");
+		btChamado.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null,"Em breve!");
+			}
+		});
 		btChamado.setBounds(240, 166, 111, 23);
 		contentPane.add(btChamado);
 		
 		JButton btRelatorio = new JButton("Relat\u00F3rios");
+		btRelatorio.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null,"Em breve!!");
+			}
+		});
 		btRelatorio.setBounds(240, 132, 111, 23);
 		contentPane.add(btRelatorio);
 	}
