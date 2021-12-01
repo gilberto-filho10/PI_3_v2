@@ -1,21 +1,23 @@
 package viewer;
 
-import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
-import java.awt.Font;
-import java.awt.Color;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.JFormattedTextField;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import javax.swing.border.EmptyBorder;
+
+import model.Prestador;
+import model.PrestadorDAO;
+import services.BD;
 
 public class GUIPrestador extends JFrame {
 
@@ -26,6 +28,9 @@ public class GUIPrestador extends JFrame {
 	private JTextField tfRg;
 	private JTextField tfLocalizarP;
 	private JTextField tfEndereco;
+	private PrestadorDAO dao;
+	private Prestador p;
+	private BD bd;
 
 	/**
 	 * Launch the application.
@@ -47,6 +52,11 @@ public class GUIPrestador extends JFrame {
 	 * Create the frame.
 	 */
 	public GUIPrestador() {
+		dao = new PrestadorDAO();
+		p = new Prestador();
+		bd = new BD();
+		bd.getConnection();
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 555, 382);
 		contentPane = new JPanel();
@@ -149,6 +159,11 @@ public class GUIPrestador extends JFrame {
 		tfLocalizarP.setColumns(10);
 		
 		JButton btLocalizarP = new JButton("Pesquisar");
+		btLocalizarP.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//Corrigir funcionamento...
+			}
+		});
 		btLocalizarP.setBounds(327, 280, 89, 23);
 		contentPane.add(btLocalizarP);
 		
@@ -157,6 +172,8 @@ public class GUIPrestador extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if(tfNome.getText() != null && txCpf.getText()!=null) {
 					JOptionPane.showMessageDialog(null,"Cadastro realizado com sucesso");
+					//Prestador p = new Prestador("Rodrigo", "12345678910123", "33388678911", "3334599891", "13340477", "Av. Benjamin Constant", "19345678940", "Everaldo Timão");
+					//PrestadorDAO dao = new PrestadorDAO();
 				}
 				else {
 					JOptionPane.showMessageDialog(null,"Verifique o preenchimento dos dados");

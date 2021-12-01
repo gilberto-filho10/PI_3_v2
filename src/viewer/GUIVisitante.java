@@ -1,30 +1,35 @@
 package viewer;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
-import java.awt.Font;
-import javax.swing.JButton;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.JFormattedTextField;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import javax.swing.border.EmptyBorder;
+
+import model.Visitante;
+import model.VisitanteDAO;
+import services.BD;
 
 public class GUIVisitante extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField tfLocalizarVi;
 	private JTextField txIdVisitante;
-	private JTextField textField_1;
+	private JTextField tfNome;
 	private JTextField textField_2;
 	private JTextField tfMorResp;
+	private VisitanteDAO dao;
+	private Visitante vi;
+	private BD bd;
 
 	/**
 	 * Launch the application.
@@ -46,6 +51,11 @@ public class GUIVisitante extends JFrame {
 	 * Create the frame.
 	 */
 	public GUIVisitante() {
+		dao = new VisitanteDAO();
+		vi = new Visitante();
+		bd = new BD();
+		bd.getConnection();
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 472, 330);
 		contentPane = new JPanel();
@@ -62,12 +72,12 @@ public class GUIVisitante extends JFrame {
 		JButton tbSalvarVi = new JButton("Salvar");
 		tbSalvarVi.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//if(tfMorResp.getText() == null) {
+				if(tfNome.getText() != null && tfMorResp.getText()!=null) {
+					JOptionPane.showMessageDialog(null,"Cadastro realizado com sucesso");
+				}
+				else {
 					JOptionPane.showMessageDialog(null,"Verifique o preenchimento dos dados");
-				//}
-				//else {
-					//JOptionPane.showMessageDialog(null,"Cadastro realizado com sucesso");
-					//}
+					}
 			}
 		});
 		tbSalvarVi.setBounds(183, 193, 87, 23);
@@ -84,6 +94,11 @@ public class GUIVisitante extends JFrame {
 		contentPane.add(tfLocalizarVi);
 		
 		JButton btLocalizarVi = new JButton("Pesquisar");
+		btLocalizarVi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//Corrigir funcionamento...
+			}
+		});
 		btLocalizarVi.setBounds(321, 238, 89, 23);
 		contentPane.add(btLocalizarVi);
 		
@@ -97,10 +112,10 @@ public class GUIVisitante extends JFrame {
 		txIdVisitante.setBounds(78, 47, 62, 20);
 		contentPane.add(txIdVisitante);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(207, 44, 191, 20);
-		contentPane.add(textField_1);
+		tfNome = new JTextField();
+		tfNome.setColumns(10);
+		tfNome.setBounds(207, 44, 191, 20);
+		contentPane.add(tfNome);
 		
 		JLabel lbNome = new JLabel("Nome");
 		lbNome.setBounds(163, 47, 46, 14);

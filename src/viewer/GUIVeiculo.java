@@ -1,21 +1,23 @@
 package viewer;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
-import java.awt.Font;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.JFormattedTextField;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import javax.swing.border.EmptyBorder;
+
+import model.Veiculo;
+import model.VeiculoDAO;
+import services.BD;
 
 public class GUIVeiculo extends JFrame {
 
@@ -24,6 +26,9 @@ public class GUIVeiculo extends JFrame {
 	private JTextField tfCor;
 	private JTextField tfIdVeiculo;
 	private JTextField tfLocalizarVe;
+	private VeiculoDAO dao;
+	private Veiculo ve;
+	private BD bd;
 
 	/**
 	 * Launch the application.
@@ -45,6 +50,11 @@ public class GUIVeiculo extends JFrame {
 	 * Create the frame.
 	 */
 	public GUIVeiculo() {
+		dao = new VeiculoDAO();
+		ve = new Veiculo();
+		bd = new BD();
+		bd.getConnection();
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -105,7 +115,14 @@ public class GUIVeiculo extends JFrame {
 		JButton tbSalvarVe = new JButton("Salvar");
 		tbSalvarVe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null,"Cadastro realizado com sucesso");
+				if(tfModelo.getText() != null && txPlaca.getText()!=null) {
+					JOptionPane.showMessageDialog(null,"Cadastro realizado com sucesso");
+					//Veiculo v = new Veiculo(2,"Brasilia","DER4468","2019","Azul");
+					//VeiculoDAO dao = new VeiculoDAO();
+				}
+				else {
+					JOptionPane.showMessageDialog(null,"Verifique o preenchimento dos dados");
+					}
 			}
 		});
 		tbSalvarVe.setBounds(170, 181, 87, 23);
@@ -124,9 +141,7 @@ public class GUIVeiculo extends JFrame {
 		JButton btLocalizarVe = new JButton("Pesquisar");
 		btLocalizarVe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				GUIConsulta frame = new GUIConsulta();
-				frame.setVisible(true);
-				dispose();
+				//Corrigir funcionamento...
 			}
 		});
 		btLocalizarVe.setBounds(309, 228, 89, 23);

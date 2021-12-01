@@ -83,7 +83,7 @@ public class VeiculoDAO {
 	/**
 	 * Localiza um Veiculo a partir de seu codigo
 	 * @param IdVeiculo é o codigo do Morador a ser excluido
-	 * @return - o produto na forma de um objeto ou null caso não localizado
+	 * @return - o Veiculo na forma de um objeto ou null caso não localizado
 	 */
 	public Veiculo localizar (int IdVeiculo) {
 		Veiculo v = new Veiculo(); 

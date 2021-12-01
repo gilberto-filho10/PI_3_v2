@@ -124,6 +124,11 @@ public class GUIMorador extends JFrame {
 		contentPane.add(lbLocalizarM);
 		
 		JButton btLocalizarM = new JButton("Pesquisar");
+		btLocalizarM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//Corrigir funcionamento...
+			}
+		});
 		btLocalizarM.setBounds(278, 229, 89, 23);
 		contentPane.add(btLocalizarM);
 		

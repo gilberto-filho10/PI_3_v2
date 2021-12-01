@@ -89,7 +89,7 @@ public class PrestadorDAO {
 	/**
 	 * Localiza um Prestador a partir de seu codigo
 	 * @param Prestador é o codigo do Morador a ser excluido
-	 * @return - o produto na forma de um objeto ou null caso não localizado
+	 * @return - o prestador na forma de um objeto ou null caso não localizado
 	 */
 	public Prestador localizar (int idPrestador) {
 		Prestador p = new Prestador(); 
